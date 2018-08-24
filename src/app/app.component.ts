@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
+  // Var declaration
   records: Array<any>;
   recordForm: FormGroup;
   diabetes: any;
@@ -19,6 +20,7 @@ export class AppComponent {
     this.records = [];
   }
 
+  // form initialize
   private createForm() {
     this.recordForm = this.fb.group({
       firstName: [""],
@@ -53,6 +55,7 @@ export class AppComponent {
     this.records.push(data);
   }
 
+  // Filter function
   getOnlyMinors() {
     const newRecords = [];
     if (!this.checked) {
