@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="container">
+    <div class="col-md-12 text-center">
+      <h1>Medical Record</h1>
+    </div>
+    <div class="col-md-12">
+      <form [formGroup]='recordForm' (ngSubmit)='onSubmit()'>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input formControlName='firstName' name="firstName" type="text" class="form-control" id="firstName" placeholder="">
+            </div>
+            <br>
+            <div class="form-group">
+              <div class="btn-group">
+                <label class="btn btn-default" btnRadio="Left">
+                  <input type="radio" name="gender" [(ngModel)]="gender" formControlName="gender" value="Male"> Male
+                </label>
+                <label class="btn btn-default" btnRadio="Right">
+                  <input type="radio" name="gender" [(ngModel)]="gender" formControlName="gender" value='female'> Female
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input formControlName='city' name="city" type="text" class="form-control" id="city" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="gender">Living with Diabetes?</label>
+              <div class="btn-group">
+                <label class="btn btn-default" btnRadio="Left">
+                  <input type="radio" name="diabetes" [(ngModel)]="diabetes" formControlName="diabetes" value="yes">Yes
+                </label>
+                <label class="btn btn-default" btnRadio="Middle">
+                  <input type="radio" name="diabetes" [(ngModel)]="diabetes" formControlName="diabetes" value='no'> No
+                </label>
+                <label class="btn btn-default" btnRadio="Right">
+                  <input type="radio" name="diabetes" [(ngModel)]="diabetes" formControlName="diabetes" value='Unknow'> Unknow
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input formControlName='lastName' name="lastName" type="text" class="form-control" id="lastName" placeholder="">
+            </div>
+
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input formControlName='age' name="age" type="number" class="form-control" id="age" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input formControlName='country' name="country" type="text" class="form-control" id="country" placeholder="">
+            </div>
+          </div>
+          <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-primary btn-lg">
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <br>
+    <hr style="border: solid 1px black;">
+    <div class="row">
+        <div class="col-md-8">
+            <p>List of medical records</p>
+          </div>
+          <div class="col-md-4 text-right">
+            <input  (change)='getOnlyMinors()' type="checkbox"> Only minors
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <ul>
+          <li *ngFor=' let record of records'>
+            {{record.firstName}} {{record.lastName}} ({{record.gender}}), {{record.age}} - {{record.city}} ({{record.country}})
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</div>
